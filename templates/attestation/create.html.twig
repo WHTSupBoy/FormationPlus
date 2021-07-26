@@ -1,0 +1,42 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    FormationPlus
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Interface Admin</h1>
+        <h2>Création d'une attestation</h2>
+        {{ form_start(formView) }}
+
+        {{ form_errors(formView) }}
+
+        {{ form_row(formView.etudiant) }}
+
+
+        {% if etudiant is not null %}
+            <label for="attestation_textarea" class="form-label">Attestation générée</label>
+            <textarea class="form-control" id="attestation_textarea" rows="11">
+                {% include 'attestation/textarea.html.twig' %}
+            </textarea>
+        {% endif %}
+
+        <button type="submit" class="btn btn-primary">
+            <i class="fas fa-save"></i>
+            Enregistrer l'attestation
+        </button>
+
+        {{ form_end(formView) }}
+
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        function redirectOnStudentChange() {
+            const x = document.getElementById("form_etudiant").value
+            window.location.replace('{{ path('attestation_create') }}/' + x)
+        }
+    </script>
+{% endblock %}
