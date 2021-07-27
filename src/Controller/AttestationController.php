@@ -99,17 +99,17 @@ class AttestationController extends AbstractController
 
         $form->handleRequest($request);
         
-        $data = $form->getData();
+//         $data = $form->getData();
 
-        if ($form->isSubmitted()) {
-            $data = $form->getData();
+//         if ($form->isSubmitted()) {
+//             $data = $form->getData();
 
-            $attestation = new Attestation();
-            $attestation->setMessage($data["message"])
-                ->setEtudiant($data["etudiant"])
-                ->setConvention($data["convention"]);
+//             $attestation = new Attestation();
+//             $attestation->setMessage($data["message"])
+//                 ->setEtudiant($data["etudiant"])
+//                 ->setConvention($data["convention"]);
 
-        }
+//         } //C'est la partie où je souhaitais récupérer les informations une fois que le formulaire est validé, mais je n'ai pas résolu le problème à temps.
 
         $formView = $form->createView();
 
